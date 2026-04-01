@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
           <div className="bg-blue-600 p-1.5 rounded-lg">
             <Wrench className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-gray-900">ToolRent</span>
+          <span className="text-xl font-bold text-gray-900">Alquiler de Herramientas</span>
         </div>
         <div className="flex items-center gap-8">
           {navItems.map((item) => (

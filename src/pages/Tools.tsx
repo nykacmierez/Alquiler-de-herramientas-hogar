@@ -124,7 +124,7 @@ export const Tools: React.FC = () => {
                   <Trash2 className="w-5 h-5 mr-2" /> Eliminar
                 </Button>
                 <Button
-                  className="flex-[2]"
+                  className="flex-2"
                   onClick={() => navigate(`/new-rental/${selectedTool.id}`)}
                 >
                   Iniciar Alquiler

@@ -13,7 +13,7 @@ export const RentalCard: React.FC<RentalCardProps> = ({ rental, onClick }) => {
   return (
     <Card onClick={onClick} className="p-4">
       <div className="flex items-center gap-4">
-        <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+        <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
           <img
             src={rental.herramienta.foto}
             alt={rental.herramienta.nombre}

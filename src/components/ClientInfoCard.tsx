@@ -54,14 +54,14 @@ export const ClientInfoCard: React.FC<ClientInfoCardProps> = ({ client }) => {
 
       <div className="space-y-3">
         <h4 className="font-semibold text-gray-900">Documentación</h4>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
             <p className="text-xs text-gray-500">DNI</p>
-            <img src={client.fotoDni} className="rounded-lg h-24 w-full object-cover border" referrerPolicy="no-referrer" />
+            <img src={client.fotoDni} className="rounded-lg h-40 sm:h-24 w-full object-cover border" referrerPolicy="no-referrer" />
           </div>
           <div className="space-y-1">
             <p className="text-xs text-gray-500">Boleta Servicio</p>
-            <img src={client.fotoBoletaServicio} className="rounded-lg h-24 w-full object-cover border" referrerPolicy="no-referrer" />
+            <img src={client.fotoBoletaServicio} className="rounded-lg h-40 sm:h-24 w-full object-cover border" referrerPolicy="no-referrer" />
           </div>
         </div>
       </div>

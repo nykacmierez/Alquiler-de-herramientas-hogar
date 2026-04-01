@@ -31,7 +31,7 @@ export const Tools: React.FC = () => {
         title="Catálogo de Herramientas"
         subtitle="Gestiona y alquila tus equipos"
         action={
-          <Button onClick={() => navigate('/add-tool')} className="rounded-full">
+          <Button onClick={() => navigate('/add-tool')} className="w-full md:w-auto rounded-full">
             <Plus className="w-5 h-5 mr-1" /> Nuevo
           </Button>
         }
@@ -47,20 +47,19 @@ export const Tools: React.FC = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap transition-all ${
-                selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="relative w-full md:w-64 shrink-0">
+          <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="h-12 w-full rounded-xl border border-gray-200 bg-white pl-11 pr-4 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -79,6 +78,27 @@ export const Tools: React.FC = () => {
         isOpen={!!selectedTool}
         onClose={() => setSelectedTool(null)}
         title="Detalle de Herramienta"
+        mobileBottomSheet
+        footer={selectedTool ? (
+          <div className="flex flex-col md:flex-row gap-3">
+            <Button
+              variant="danger"
+              fullWidth
+              onClick={() => {
+                deleteTool(selectedTool.id);
+                setSelectedTool(null);
+              }}
+            >
+              <Trash2 className="w-5 h-5 mr-2" /> Eliminar
+            </Button>
+            <Button
+              fullWidth
+              onClick={() => navigate(`/new-rental/${selectedTool.id}`)}
+            >
+              Iniciar Alquiler
+            </Button>
+          </div>
+        ) : undefined}
       >
         {selectedTool && (
           <div className="space-y-6">
@@ -110,25 +130,6 @@ export const Tools: React.FC = () => {
                   <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Stock Disponible</p>
                   <p className="font-semibold">{selectedTool.stock} unidades</p>
                 </div>
-              </div>
-
-              <div className="flex gap-3 pt-4">
-                <Button
-                  variant="danger"
-                  className="flex-1"
-                  onClick={() => {
-                    deleteTool(selectedTool.id);
-                    setSelectedTool(null);
-                  }}
-                >
-                  <Trash2 className="w-5 h-5 mr-2" /> Eliminar
-                </Button>
-                <Button
-                  className="flex-2"
-                  onClick={() => navigate(`/new-rental/${selectedTool.id}`)}
-                >
-                  Iniciar Alquiler
-                </Button>
               </div>
             </div>
           </div>

@@ -59,10 +59,20 @@ export const Rentals: React.FC = () => {
         isOpen={!!selectedRental}
         onClose={() => setSelectedRental(null)}
         title={`Detalle Alquiler ${selectedRental?.id}`}
+        mobileBottomSheet
+        footer={selectedRental && !selectedRental.entregado ? (
+          <Button
+            fullWidth
+            size="lg"
+            onClick={() => setIsReturnModalOpen(true)}
+          >
+            Registrar Devolución
+          </Button>
+        ) : undefined}
       >
         {selectedRental && (
-          <div className="space-y-8">
-            <div className="flex items-center justify-between">
+          <div className="space-y-6 md:space-y-8">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <span className={`px-4 py-1 rounded-full text-sm font-bold ${
                 selectedRental.entregado ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
               }`}>
@@ -78,13 +88,13 @@ export const Rentals: React.FC = () => {
 
             <section className="space-y-4">
               <h4 className="font-bold text-gray-900 border-l-4 border-blue-600 pl-3">Herramienta Alquilada</h4>
-              <div className="flex gap-4 bg-gray-50 p-4 rounded-2xl">
+              <div className="flex flex-col sm:flex-row gap-4 bg-gray-50 p-4 rounded-2xl">
                 <img
                   src={selectedRental.herramienta.foto}
-                  className="w-24 h-24 rounded-xl object-cover"
+                  className="w-full h-48 sm:w-24 sm:h-24 rounded-xl object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div>
+                <div className="min-w-0">
                   <h5 className="font-bold text-lg">{selectedRental.herramienta.nombre}</h5>
                   <p className="text-gray-500">{selectedRental.herramienta.marca} {selectedRental.herramienta.modelo}</p>
                   <p className="text-blue-600 font-bold mt-1">{formatCurrency(selectedRental.herramienta.precio)} / día</p>
@@ -98,7 +108,7 @@ export const Rentals: React.FC = () => {
                 <p className="text-sm text-gray-500">Fecha: {formatDate(selectedRental.fechaInicio)}</p>
                 <img
                   src={selectedRental.fotoEstadoEntrega}
-                  className="w-full h-48 rounded-2xl object-cover border"
+                  className="w-full h-56 sm:h-48 rounded-2xl object-cover border"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -111,22 +121,11 @@ export const Rentals: React.FC = () => {
                   <p className="text-sm text-gray-500">Fecha: {formatDate(selectedRental.fechaFin)}</p>
                   <img
                     src={selectedRental.fotoEstadoDevolucion}
-                    className="w-full h-48 rounded-2xl object-cover border"
+                    className="w-full h-56 sm:h-48 rounded-2xl object-cover border"
                     referrerPolicy="no-referrer"
                   />
                 </div>
               </section>
-            )}
-
-            {!selectedRental.entregado && (
-              <Button
-                fullWidth
-                size="lg"
-                onClick={() => setIsReturnModalOpen(true)}
-                className="mt-6"
-              >
-                Registrar Devolución
-              </Button>
             )}
           </div>
         )}
@@ -137,6 +136,17 @@ export const Rentals: React.FC = () => {
         isOpen={isReturnModalOpen}
         onClose={() => setIsReturnModalOpen(false)}
         title="Registrar Devolución"
+        mobileBottomSheet
+        footer={(
+          <div className="flex flex-col md:flex-row gap-3">
+            <Button variant="outline" fullWidth onClick={() => setIsReturnModalOpen(false)}>
+              Cancelar
+            </Button>
+            <Button fullWidth disabled={!returnPhoto} onClick={handleReturn}>
+              Confirmar Devolución
+            </Button>
+          </div>
+        )}
       >
         <div className="space-y-6">
           <p className="text-gray-600">
@@ -164,14 +174,6 @@ export const Rentals: React.FC = () => {
             )}
           </div>
 
-          <div className="flex gap-3">
-            <Button variant="outline" fullWidth onClick={() => setIsReturnModalOpen(false)}>
-              Cancelar
-            </Button>
-            <Button fullWidth disabled={!returnPhoto} onClick={handleReturn}>
-              Confirmar Devolución
-            </Button>
-          </div>
         </div>
       </Modal>
     </div>

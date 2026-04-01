@@ -90,12 +90,12 @@ export const NewRental: React.FC = () => {
   );
 
   return (
-    <div className="max-w-2xl mx-auto pb-10">
-      <div className="flex items-center gap-4 mb-6">
+    <div className="max-w-2xl mx-auto px-1 sm:px-0 pb-14 md:pb-10">
+      <div className="flex items-center gap-4 mb-8">
         <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
           <ArrowLeft className="w-6 h-6" />
         </Button>
-        <h1 className="text-2xl font-bold text-gray-900">Nuevo Alquiler</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Nuevo Alquiler</h1>
       </div>
 
       <div className="mb-8 flex justify-between px-2">
@@ -116,16 +116,16 @@ export const NewRental: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
+            className="space-y-7 sm:space-y-6"
           >
-            <Card className="p-6 space-y-4">
+            <Card className="p-4 sm:p-6 space-y-4">
               <h2 className="text-lg font-bold mb-4">Datos del Cliente</h2>
               <Input
                 label="Nombre Completo"
                 value={formData.nombre}
                 onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
               />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="DNI"
                   value={formData.dni}
@@ -155,7 +155,7 @@ export const NewRental: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, fechaNacimiento: e.target.value })}
               />
             </Card>
-            <Button fullWidth size="lg" onClick={nextStep}>
+            <Button fullWidth size="lg" onClick={nextStep} className="mt-2">
               Siguiente <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </motion.div>
@@ -167,9 +167,9 @@ export const NewRental: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
+            className="space-y-7 sm:space-y-6"
           >
-            <Card className="p-6 space-y-6">
+            <Card className="p-4 sm:p-6 space-y-6">
               <h2 className="text-lg font-bold mb-4">Documentación y Fotos</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <PhotoUpload label="Foto del Cliente" field="fotoCliente" value={formData.fotoCliente} />
@@ -179,7 +179,7 @@ export const NewRental: React.FC = () => {
               </div>
               <PhotoUpload label="Estado de la Herramienta (Entrega)" field="fotoEstadoEntrega" value={formData.fotoEstadoEntrega} />
             </Card>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="outline" fullWidth size="lg" onClick={prevStep}>
                 Anterior
               </Button>
@@ -196,9 +196,9 @@ export const NewRental: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-6"
+            className="space-y-7 sm:space-y-6"
           >
-            <Card className="p-6 space-y-6">
+            <Card className="p-4 sm:p-6 space-y-6">
               <h2 className="text-lg font-bold mb-4">Finalizar Alquiler</h2>
 
               <div className="space-y-4">
@@ -216,12 +216,12 @@ export const NewRental: React.FC = () => {
 
                 <div className="space-y-1.5">
                   <label className="text-sm font-medium text-gray-700 ml-1">Firma del Cliente</label>
-                  <div className="h-32 rounded-2xl border-2 border-gray-200 bg-gray-50 flex items-center justify-center">
+                  <div className="h-56 rounded-2xl border-2 border-gray-200 bg-gray-50 flex items-center justify-center">
                     <span className="text-gray-400 text-sm italic">Área de firma preparada</span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label="Tarjeta Crédito (Opcional)"
                     placeholder="**** **** **** ****"
@@ -237,7 +237,7 @@ export const NewRental: React.FC = () => {
                 </div>
               </div>
             </Card>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="outline" fullWidth size="lg" onClick={prevStep}>
                 Anterior
               </Button>

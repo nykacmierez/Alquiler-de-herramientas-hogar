@@ -29,7 +29,7 @@ export const MOCK_TOOLS: Herramienta[] = [
     foto: 'https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&q=80&w=400',
     categoria: 'Jardinería',
     precio: 3500,
-    stock: 2,
+    stock: 0,
   },
   {
     id: '4',

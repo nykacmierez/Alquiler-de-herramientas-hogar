@@ -35,13 +35,13 @@ export const AddTool: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <div className="max-w-2xl mx-auto px-1 sm:px-0 pb-14 md:pb-10 space-y-7 sm:space-y-6">
       <SectionHeader
         title="Cargar Stock"
         subtitle="Agrega una nueva herramienta al catálogo"
       />
 
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <div
@@ -66,7 +66,7 @@ export const AddTool: React.FC = () => {
               onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Marca"
                 placeholder="Ej: DeWalt"
@@ -91,7 +91,7 @@ export const AddTool: React.FC = () => {
               onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Precio por día ($)"
                 type="number"
@@ -111,7 +111,7 @@ export const AddTool: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <Button variant="outline" fullWidth type="button" onClick={() => navigate(-1)}>
               Cancelar
             </Button>

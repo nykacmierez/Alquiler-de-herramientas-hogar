@@ -1,0 +1,5 @@
+{
+  "name": "ToolRent - Gestión de Alquileres",
+  "description": "Sistema profesional para el registro y gestión de alquiler de herramientas con seguimiento de estado y documentación de clientes.",
+  "requestFramePermissions": []
+}

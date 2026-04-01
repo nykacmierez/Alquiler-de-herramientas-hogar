@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "Alquiler de Herramientas - Gestión de Alquileres",
+=======
+  "name": "ToolRent - Gestión de Alquileres!",
+>>>>>>> 79c4349a70d99cdad2cceae36a49a0dd44562166
   "description": "Sistema profesional para el registro y gestión de alquiler de herramientas con seguimiento de estado y documentación de clientes.",
   "requestFramePermissions": []
 }
